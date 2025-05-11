@@ -36,6 +36,7 @@ exports.updateTaskStatus = async (req, res, next) => {
 
   try {
 
+    // GETTING TASK STATUS
     const { taskStatus } = req.body;
     const { taskId } = req.params;
 
@@ -47,6 +48,7 @@ exports.updateTaskStatus = async (req, res, next) => {
       return res.status(404).json({ message: "Invalid task status", success: false });
     }
 
+    // TASK STATUS UPDATED
     const updatedTask = await Task.findOneAndUpdate(
       { taskId },
       { $set: { taskStatus } },
